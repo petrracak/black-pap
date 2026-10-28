@@ -5,7 +5,7 @@
   /* ================== CONFIGURAÇÃO ==================
      Troque os links aqui: todos os botões de compra usam CHECKOUT_URL
      e o botão "Tirar uma dúvida" usa WHATSAPP_URL. */
-  var CHECKOUT_URL = "";   // ex.: "https://pay.hotmart.com/XXXXXXXX"
+  var CHECKOUT_URL = "https://pay.hotmart.com/U108012639R?off=gi2yx3uq&checkoutMode=10";
   var WHATSAPP_URL = "";   // ex.: "https://wa.me/5511999999999?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Black%20PAP"
   /* ================================================== */
 
