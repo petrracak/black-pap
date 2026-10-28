@@ -1,0 +1,105 @@
+
+/* =========================================================
+   AJUSTES DA VERSÃO ENXUTA
+   Aqui ficam só as regras que mudaram porque o HTML encolheu:
+   o ícone virou ::before, e alguns elementos de embrulho sumiram.
+   ========================================================= */
+
+/* ---------- ícone dentro dos cards ---------- */
+.bp-tile[class*="bp-ic--"]::before,
+.bp-mod[class*="bp-ic--"]::before {
+  width: 46px; height: 46px; border-radius: 14px;
+  background-size: 26px 26px;
+}
+.bp-tile--pain::before { background-color: rgba(226, 120, 122, .1); box-shadow: inset 0 0 0 1px rgba(226, 120, 122, .28); }
+.bp-tile--win::before { background-color: rgba(230, 194, 122, .1); box-shadow: inset 0 0 0 1px rgba(230, 194, 122, .3); }
+.bp-mod[class*="bp-ic--"]::before {
+  width: 52px; height: 52px; border-radius: 16px; margin-bottom: 16px;
+  background-color: rgba(230, 194, 122, .1); box-shadow: inset 0 0 0 1px rgba(230, 194, 122, .3);
+}
+
+/* ---------- cards do "Imagine" ---------- */
+.bp-scard { position: relative; display: block; }
+.bp-scard img { width: 100%; }
+.bp-scard p { padding: 20px 20px 22px 86px; font-size: 19px; font-weight: 600; line-height: 1.38; }
+.bp-scard::before {
+  position: absolute; left: 20px; bottom: 22px;
+  width: 52px; height: 52px; border-radius: 16px;
+  background-color: #e6c27a; background-size: 27px 27px;
+}
+
+/* ---------- linha da tabela da oferta ---------- */
+.bp-stack__row[class*="bp-ic--"]::before {
+  width: 40px; height: 40px; border-radius: 12px; margin-right: 14px;
+  background-size: 21px 21px;
+  background-color: rgba(230, 194, 122, .09); box-shadow: inset 0 0 0 1px rgba(230, 194, 122, .2);
+}
+.bp-stack__row { border-bottom: 1px solid var(--bp-line); }
+
+/* ---------- botões ---------- */
+.bp-btn { gap: 10px; }
+.bp-btn::after {
+  content: ""; display: inline-block; width: 28px; height: 28px; flex: none;
+  border-radius: 50%; background-color: var(--bp-cta-ink);
+  background-image: url("../icones/arrow-up-right-claro.svg");
+  background-position: center; background-repeat: no-repeat; background-size: 15px 15px;
+}
+.bp-btn--whats::after { display: none; }
+.bp-btn--whats::before {
+  content: ""; display: inline-block; width: 24px; height: 24px; flex: none;
+  background: url("../icones/whatsapp-escuro.svg") center / contain no-repeat;
+}
+
+/* ---------- vídeos ---------- */
+.bp-video { position: relative; padding-top: 110px; }
+.bp-video::before {
+  content: ""; position: absolute; left: 50%; top: 40px;
+  width: 68px; height: 68px; margin-left: -34px; border-radius: 50%;
+  background-color: #e6c27a;
+  background-image: url("../icones/player-play-escuro.svg");
+  background-position: center; background-repeat: no-repeat; background-size: 30px 30px;
+}
+
+/* ---------- legendas e listas ---------- */
+.bp-poster figcaption[class*="bp-ic--"]::before { width: 18px; height: 18px; margin-right: 8px; }
+.bp-faixa__linha span::before { width: 20px; height: 20px; margin-right: 9px; }
+.bp-pay li::before { width: 18px; height: 18px; margin-right: 7px; }
+
+/* ---------- FAQ: o mais virou desenho do próprio summary ---------- */
+.bp-acc summary { position: relative; padding-right: 48px; }
+.bp-acc summary::after {
+  content: ""; position: absolute; right: 0; top: 50%;
+  width: 32px; height: 32px; margin-top: -16px; border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(230, 194, 122, .45);
+  background: url("../icones/plus.svg") center / 17px 17px no-repeat;
+}
+.bp-acc details > p { color: var(--bp-soft); font-size: 16.5px; }
+.bp-acc details > p:last-child { padding-bottom: 18px; }
+.bp-acc details > p + p { margin-top: 10px; }
+
+/* ---------- arte do suporte ---------- */
+.bp-support__art { position: relative; width: 190px; height: 190px; }
+.bp-support__art::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background-color: #0b1810;
+  background-image: url("../icones/headset.svg");
+  background-position: center; background-repeat: no-repeat; background-size: 100px 100px;
+  box-shadow: inset 0 0 0 1px rgba(230, 194, 122, .35);
+}
+.bp-support__art::after {
+  content: ""; position: absolute; right: 8px; bottom: 8px;
+  width: 62px; height: 62px; border-radius: 50%;
+  background-color: #25d366;
+  background-image: url("../icones/whatsapp-branco.svg");
+  background-position: center; background-repeat: no-repeat; background-size: 32px 32px;
+  border: 6px solid #0a1510;
+}
+
+/* ---------- ilustração dos cards do método ---------- */
+.bp-mcard__art[class*="bp-ic--"]::before { width: 84px; height: 84px; }
+
+/* ---------- linha de compra segura ---------- */
+.bp-safe::before {
+  content: ""; display: inline-block; width: 17px; height: 17px;
+  background: url("../icones/lock.svg") center / contain no-repeat;
+}

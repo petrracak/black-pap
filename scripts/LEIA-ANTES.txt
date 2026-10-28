@@ -1,0 +1,118 @@
+BLACK PAP · versão simplificada, feita para o conversor de HTML em Elementor
+=============================================================================
+
+O que mudou nesta versão
+------------------------
+Tirei tudo o que derruba o conversor:
+
+  - o JavaScript inteiro (a página agora é só HTML e CSS);
+  - os desenhos SVG que ficavam dentro do HTML (eram 289 pedaços de desenho);
+    agora cada ícone é um arquivo .svg separado, carregado como imagem;
+  - os carrosséis, que viraram grades: tudo aparece de uma vez, sem setas;
+  - os cards que empilhavam na rolagem, que viraram uma grade normal;
+  - a faixa dourada em loop, que virou uma faixa parada;
+  - a cena das letras P-A-P se abrindo, que virou um bloco com a sigla e o nome;
+  - a barra de progresso, a barra fixa de compra e a janela de ampliar print;
+  - o selo da garantia, que virou uma imagem única já desenhada.
+
+A página ficou com 594 elementos (era 1.121) e o CSS caiu de 53 KB para 18 KB.
+O texto, as fotos, os prints das alunas e as cores continuam os mesmos.
+
+O que você perde: o movimento. Esta versão é estática.
+
+
+Comece pelo teste (30 segundos)
+-------------------------------
+Dentro da pasta "partes" tem o arquivo:
+
+    teste.html
+
+São 7 elementos: um título, um texto e uma imagem. Jogue ele no conversor
+antes de qualquer outra coisa.
+
+  - Se converter: o plugin está funcionando e o problema era mesmo o tamanho.
+    Siga para o index.html inteiro.
+  - Se der o mesmo erro crítico: o plugin está quebrado ou o PHP do servidor
+    está no limite. Aí não adianta mexer no HTML; é com o suporte da
+    hospedagem (veja o fim deste arquivo).
+
+
+Antes de converter, troque três coisas
+--------------------------------------
+Abra o index.html num editor de texto e use localizar e substituir:
+
+  1. COLE-AQUI-O-LINK-DA-HOTMART   (aparece 8 vezes)
+     Troque pelo link do checkout. São os botões de compra.
+
+  2. COLE-AQUI-O-LINK-DO-WHATSAPP  (aparece 1 vez)
+     Troque pelo link do time, no formato https://wa.me/5511999999999
+
+  3. COLE-AQUI-O-LINK-DO-VIDEO     (aparece 6 vezes)
+     Troque pelo endereço de cada depoimento no YouTube. Aqui é uma por vez,
+     porque cada card leva a um vídeo diferente.
+
+Sem JavaScript, o link precisa estar escrito no próprio botão. Se você deixar
+o texto COLE-AQUI, o botão não leva a lugar nenhum.
+
+
+Como converter
+--------------
+1. Suba a pasta "assets" para a sua hospedagem, por FTP ou pelo Gerenciador de
+   Arquivos. Anote o endereço onde ela ficou. Por exemplo:
+
+       https://seusite.com.br/black-pap/assets/
+
+2. No index.html, troque  assets/  pelo endereço completo da pasta.
+   (Localizar: src="assets/   Substituir: src="https://seusite.com.br/black-pap/assets/ )
+
+3. Jogue o index.html no conversor.
+
+
+Se o arquivo inteiro não passar: converta por partes
+----------------------------------------------------
+Na pasta "partes", a página está dividida em sete arquivos, cada um entre
+66 e 115 elementos:
+
+    1-topo.html                 primeira dobra e a seção vermelha
+    2-contraste-prints.html     seção verde e os prints das alunas
+    3-imagine.html              "Imagine conseguir"
+    4-metodo-conteudo.html      Método PAP e o que você vai aprender
+    5-bonus-videos.html         bônus e depoimentos em vídeo
+    6-oferta-garantia.html      preço e garantia
+    7-mentora-contato-faq.html  Fernanda, WhatsApp, perguntas e rodapé
+
+Converta um por vez, na ordem, e vá colando as seções que o plugin criar
+dentro de uma mesma página do Elementor. O resultado é igual ao do arquivo
+inteiro, só que sem estourar a memória do servidor.
+
+Os links (COLE-AQUI-...) precisam ser trocados nos arquivos das partes
+também, não só no index.html.
+
+
+Depois de converter, confira
+----------------------------
+O conversor costuma descartar o CSS que não entende. Olhe principalmente:
+
+  - as cores de fundo de cada seção (preto, vinho e verde escuro);
+  - os cantos arredondados e as bordas dos cards;
+  - o tamanho das fotos dos bônus, que precisam ficar todas iguais;
+  - os botões, que precisam continuar laranja com o texto escuro.
+
+Se algo se perder, dá para refazer pelo painel do Elementor, porque agora cada
+pedaço é um elemento comum.
+
+
+Se o erro crítico voltar
+------------------------
+Aí o limite é do servidor, não do arquivo. Peça ao suporte da hospedagem:
+
+    memory_limit = 512M
+    max_execution_time = 300
+
+É um pedido comum e eles costumam ajustar na hora.
+
+
+Observação
+----------
+A versão com as animações continua no zip anterior (black-pap-elementor.zip),
+para colar num widget HTML. Se um dia você quiser voltar a ela, é só trocar.

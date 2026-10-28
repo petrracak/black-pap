@@ -1,0 +1,6 @@
+.DS_Store
+.agents/
+.claude/
+.vercel/
+skills-lock.json
+__pycache__/
