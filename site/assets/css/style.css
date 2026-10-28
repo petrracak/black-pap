@@ -185,6 +185,7 @@ main > .bp-faq { --bp-approx: 1173px; }
   .bp-btn:not(.bp-btn--sm) .bp-btn__chip { width: 42px; height: 42px; font-size: 19px; }
   .bp-btn--xl { min-height: 66px; font-size: 17px; }
   .bp-btn--whats { width: auto !important; padding-right: 24px; }
+  .bp-cta-row .bp-btn:not(.bp-btn--sm) { width: fit-content; max-width: 100%; padding-left: 24px; gap: 18px; }
 }
 
 /* =========================================================
@@ -217,6 +218,20 @@ main > .bp-faq { --bp-approx: 1173px; }
 .bp-safe { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 7px; margin-top: 18px; font-size: 14.5px; color: var(--bp-soft); }
 .bp-safe .bp-i { font-size: 15px; color: var(--bp-gold); }
 .bp-safe img { height: 15px; width: auto; transform: translateY(1px); }
+
+/* Primeira dobra compacta: reserva espaço para o CTA com as barras do navegador abertas. */
+@media (max-width: 759px) {
+  .bp-hero__photo { height: min(72vw, 34svh); margin-bottom: -24px; }
+  .bp-hero__photo img { top: -10%; height: 125%; }
+  .bp-hero__logo { width: 144px; margin-bottom: 14px; }
+  .bp-hero__title span { font-size: clamp(26px, 7.2vw, 34px); line-height: 1.08; }
+  .bp-hero__title em { font-size: clamp(23px, 6.4vw, 30px); line-height: 1.1; }
+  .bp-hero__sub { font-size: 15.5px; line-height: 1.45; margin: 14px auto 18px; }
+  .bp-hero .bp-safe { margin-top: 12px; font-size: 12.5px; gap: 5px; }
+}
+@media (max-width: 759px) and (max-height: 620px) {
+  .bp-hero__photo { height: min(72vw, 28svh); }
+}
 
 @media (min-width: 960px) {
   .bp-hero { display: grid; align-items: center; min-height: min(100svh, 900px); padding-block: 96px 120px; }
