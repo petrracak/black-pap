@@ -573,7 +573,7 @@ main > .bp-faq { --bp-approx: 1173px; }
 .bp-mentora { background: radial-gradient(60% 50% at 20% 50%, rgba(18, 41, 29, .8), transparent 70%), linear-gradient(180deg, #000, #050c08 50%, #000); }
 .bp-mentora__inner { display: grid; gap: 40px; }
 .bp-mentora__media { position: relative; max-width: 520px; margin-inline: auto; width: 100%; }
-.bp-mentora__media img { width: 100%; border-radius: 28px; aspect-ratio: 4 / 4.4; object-fit: cover; object-position: 40% 30%; }
+.bp-mentora__media img { width: 100%; border-radius: 28px; aspect-ratio: 4 / 4.4; object-fit: cover; object-position: 50% 32%; }
 .bp-mentora__media::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border-radius: 30px; border: 1px solid rgba(230, 194, 122, .35); z-index: -1; }
 .bp-mentora__stat { position: absolute; left: -6px; bottom: 22px; max-width: 220px; padding: 16px 18px; border-radius: 18px; background: rgba(8, 10, 8, .88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(230, 194, 122, .35); }
 .bp-mentora__stat b { display: block; font: 700 38px/1 var(--bp-serif); background: var(--bp-gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
