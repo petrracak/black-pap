@@ -26,6 +26,19 @@
     else if (a.getAttribute("href") === "#") a.href = "#oferta";
   });
   if (WHATSAPP_URL) $all("[data-whatsapp]").forEach(function (a) { a.href = WHATSAPP_URL; });
+  // Reposiciona após o navegador calcular as seções que estavam fora da tela.
+  $all('a[href="#valor"]').forEach(function (a) {
+    a.addEventListener("click", function (event) {
+      var target = document.getElementById("valor");
+      if (!target) return;
+      event.preventDefault();
+      history.pushState(null, "", "#valor");
+      target.scrollIntoView({ behavior: "instant", block: "start" });
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { target.scrollIntoView({ behavior: "instant", block: "start" }); });
+      });
+    });
+  });
 
   /* ---------- entrada da primeira dobra ---------- */
   requestAnimationFrame(function () { body.classList.add("bp-ready"); });
