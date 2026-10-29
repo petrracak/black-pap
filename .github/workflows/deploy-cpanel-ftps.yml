@@ -1,0 +1,69 @@
+name: Publicar Black PAP no cPanel (FTPS)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publicar arquivos? Desmarcado = apenas simulação.'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blackpap-cpanel-ftps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # A variável do repositório começa ausente: nenhum push publica até ser ativada.
+    if: ${{ github.event_name == 'workflow_dispatch' || vars.ENABLE_FTPS_DEPLOY == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conferir conta FTP exclusiva da Black PAP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        shell: bash
+        run: |
+          if [[ -z "$FTP_SERVER" || -z "$FTP_PASSWORD" ]]; then
+            echo 'Configure FTP_SERVER, FTP_USERNAME e FTP_PASSWORD nos secrets do repositório.' >&2
+            exit 1
+          fi
+          if [[ "$FTP_USERNAME" != 'deployblackpap@fernandagarnizet.com.br' ]]; then
+            echo 'FTP_USERNAME deve ser a conta exclusiva deployblackpap@fernandagarnizet.com.br.' >&2
+            exit 1
+          fi
+          if [[ ! "$FTP_SERVER" =~ ^[A-Za-z0-9][A-Za-z0-9.-]*$ ]]; then
+            echo 'FTP_SERVER deve conter apenas o hostname do servidor, sem protocolo, porta ou caminho.' >&2
+            exit 1
+          fi
+          if ! getent ahostsv4 "$FTP_SERVER" >/dev/null; then
+            echo 'FTP_SERVER não resolve no DNS. Use o hostname de FTP válido informado pela Turbo Cloud.' >&2
+            exit 1
+          fi
+
+      - name: Obter arquivos da página
+        uses: actions/checkout@v4
+
+      - name: Transferir somente site/ para a raiz da conta FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: strict
+          local-dir: ./site/
+          server-dir: ./
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.publish != true }}
+          dangerous-clean-slate: false
+          log-level: minimal
