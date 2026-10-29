@@ -4,7 +4,7 @@ Página da Black Friday do Método PAP (Fernanda Garnizet). HTML, CSS e JS puros
 
 ## Publicar na Vercel
 
-Importe esta pasta como projeto e selecione **Other** em Framework Preset. O `vercel.json` já define `site/` como Output Directory e cache de 30 dias para os recursos em `assets/`. Não é necessário comando de build.
+Importe esta pasta como projeto e selecione **Other** em Framework Preset. O `vercel.json` define `site/` como Output Directory. Não é necessário comando de build.
 
 Antes de publicar com tráfego pago, preencha `CHECKOUT_URL` e `WHATSAPP_URL` em `site/assets/js/main.js` e os IDs dos vídeos marcados para troca em `site/index.html`.
 
@@ -15,6 +15,17 @@ cd site && python3 -m http.server 5520
 ```
 
 Abre em http://localhost:5520.
+
+## Preparar publicação no cPanel (FTPS)
+
+O workflow `.github/workflows/deploy-cpanel-ftps.yml` envia apenas o conteúdo de `site/` para a raiz da conta FTP `deployblackpap@fernandagarnizet.com.br`, por FTPS explícito na porta 21, com verificação do certificado TLS. Não há comando de build nem dependências de servidor; o cPanel só precisa servir arquivos estáticos.
+
+1. Em **cPanel → Domínios**, confirme que a raiz do subdomínio `blackpap.fernandagarnizet.com.br` é `/home/fernan41/blackpap.fernandagarnizet.com.br`. Em **Contas de FTP**, confirme que essa mesma pasta é o diretório da conta `deployblackpap@fernandagarnizet.com.br`. A raiz vista por essa conta no FTP corresponde a `server-dir: ./`.
+2. Em **GitHub → Settings → Secrets and variables → Actions → Repository secrets**, cadastre `FTP_SERVER` (`br.brasil112-9575.com.br`, hostname do servidor Turbo Cloud confirmado por conexão FTPS sem login), `FTP_USERNAME` (`deployblackpap@fernandagarnizet.com.br`) e `FTP_PASSWORD`. Não coloque a senha no repositório. O nome sugerido pelo cPanel, `ftp.fernandagarnizet.com.br`, ainda não resolve no DNS; use o hostname do servidor enquanto isso.
+3. Em **Actions**, execute **Publicar Black PAP no cPanel (FTPS)** manualmente, deixando **Publicar arquivos?** desmarcado. Essa execução usa `dry-run` para verificar conexão e listar as mudanças sem transferir arquivos.
+4. Após conferir o resultado e autorizar a publicação, crie a variável de repositório `ENABLE_FTPS_DEPLOY` com valor `true` em **Settings → Secrets and variables → Actions → Variables**. A partir daí, mudanças em `site/` enviadas para `main` serão publicadas automaticamente. Também é possível executar manualmente com **Publicar arquivos?** marcado.
+
+O arquivo `vercel.json` é usado apenas pela Vercel; ele não configura cache ou redirecionamentos no cPanel. A mudança de DNS é uma etapa separada.
 
 ## Onde mexer
 
