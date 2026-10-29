@@ -33,9 +33,9 @@
       if (!target) return;
       event.preventDefault();
       history.pushState(null, "", "#valor");
-      target.scrollIntoView({ behavior: "instant", block: "start" });
+      target.scrollIntoView({ behavior: "instant", block: "center" });
       requestAnimationFrame(function () {
-        requestAnimationFrame(function () { target.scrollIntoView({ behavior: "instant", block: "start" }); });
+        requestAnimationFrame(function () { target.scrollIntoView({ behavior: "instant", block: "center" }); });
       });
     });
   });
