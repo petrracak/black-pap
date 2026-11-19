@@ -527,15 +527,16 @@ main > .bp-faq { --bp-approx: 1173px; }
 .bp-oferta .bp-lead.bp-center { margin-top: clamp(36px, 5vw, 52px); margin-bottom: clamp(44px, 6vw, 64px); }
 
 .bp-price { position: relative; max-width: 540px; margin: 0 auto; padding: 2px; border-radius: 32px; background: conic-gradient(from var(--bp-ang), rgba(230, 194, 122, .12) 0deg, rgba(230, 194, 122, .12) 200deg, #e6c27a 260deg, #fff4d6 290deg, #e6c27a 320deg, rgba(230, 194, 122, .12) 360deg); animation: bp-ang 5s linear infinite; box-shadow: 0 50px 120px -40px rgba(230, 194, 122, .4); }
-.bp-price__inner { position: relative; padding: 64px 22px 28px; border-radius: 30px; text-align: center; background: radial-gradient(120% 70% at 50% 0%, #16301f 0%, #07100b 65%, #050806 100%); }
+.bp-price__inner { position: relative; padding: 70px 22px 32px; border-radius: 30px; text-align: center; background: radial-gradient(120% 70% at 50% 0%, #16301f 0%, #07100b 65%, #050806 100%); }
 .bp-price__tag { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%); display: grid; place-items: center; padding: 15px 30px; border-radius: 999px; background: var(--bp-gold-grad); background-size: 200% 100%; animation: bp-sheen 6s linear infinite; box-shadow: 0 14px 40px -12px rgba(230, 194, 122, .7), inset 0 1px 0 rgba(255, 255, 255, .6); }
 .bp-price__tag img { width: clamp(190px, 52vw, 250px); }
-.bp-price__value--full { font-size: clamp(70px, 19vw, 120px); margin-bottom: 28px; }
 .bp-price__from { color: var(--bp-mute); font-size: 17px; }
 .bp-price__from s { text-decoration-color: var(--bp-rose); text-decoration-thickness: 2px; }
-.bp-price__label { margin-top: 6px; color: var(--bp-soft); font-size: 16px; }
+.bp-price__label { margin-top: 6px; color: var(--bp-soft); font-size: 16px; letter-spacing: .01em; }
 .bp-price__value { display: flex; justify-content: center; align-items: flex-start; gap: 6px; margin: 6px 0 4px; font: 700 clamp(92px, 25vw, 136px)/.95 var(--bp-serif); letter-spacing: -.03em; font-variant-numeric: lining-nums tabular-nums; }
 .bp-price__value small { margin-top: .32em; font: 800 clamp(20px, 5vw, 26px)/1 var(--bp-sans); letter-spacing: 0; }
+/* Preço cheio (sem parcelas): precisa do respiro que a pílula de parcelas dava. */
+.bp-price__value--full { margin: 14px 0 36px; font-size: clamp(70px, 19vw, 120px); }
 .bp-price__inst { display: inline-block; margin: 12px 0 28px; padding: 11px 22px; border-radius: 999px; border: 1px solid rgba(230, 194, 122, .4); background: rgba(230, 194, 122, .1); font: 600 clamp(20px, 5vw, 26px)/1.2 var(--bp-sans); color: var(--bp-soft); }
 .bp-price__inst b { color: var(--bp-gold-hi); font-weight: 800; }
 .bp-price .bp-btn { width: 100%; }
