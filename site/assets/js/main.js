@@ -1,12 +1,13 @@
-/* BLACK PAP | Método PAP · Fernanda Garnizet */
+/* Método PAP · Fernanda Garnizet */
 (function () {
   "use strict";
 
   /* ================== CONFIGURAÇÃO ==================
      Troque os links aqui: todos os botões de compra usam CHECKOUT_URL
      e o botão "Tirar uma dúvida" usa WHATSAPP_URL. */
-  var CHECKOUT_URL = "https://pay.hotmart.com/Y104660252E?off=1tuhcx2p&checkoutMode=10";
-  var WHATSAPP_URL = "";   // ex.: "https://wa.me/5511999999999?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20Black%20PAP"
+  // Black Friday 2026 usava o checkout da Hotmart: https://pay.hotmart.com/Y104660252E?off=1tuhcx2p&checkoutMode=10
+  var CHECKOUT_URL = "https://wa.me/551151995058?text=Falar%20com%20atendente";
+  var WHATSAPP_URL = "https://wa.me/551151995058?text=Falar%20com%20atendente";
   /* ================================================== */
 
   var doc = document.documentElement;
